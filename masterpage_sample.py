@@ -52,10 +52,10 @@ def sample_page_with_button():
 input_sampledata = tkinter.StringVar()
 sampledata = tkinter.StringVar()
 pygame.init()
-
+MasterLabel = tkinter.Label(masterpage, text="Welcome to Food NTU")
 B1 = tkinter.Button(masterpage, text ="User Location", command =display_getuserlocation_map)
 B2 = tkinter.Button(masterpage, text ="Sample Page", command =sample_page_with_button)
-
+MasterLabel.pack()
 B1.pack()
 B2.pack()
 masterpage.mainloop()
