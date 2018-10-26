@@ -18,6 +18,15 @@ def display_getuserlocation_map():
  introScreenImage = pygame.image.load("NTUMAP.png")
  screen = pygame.display.set_mode((660,465))
  screen.blit(introScreenImage,(0,0))
+ myfont = pygame.font.SysFont("monospace", 10)
+
+# render text
+ label = myfont.render("Some text!", 1, (0,0,0))
+ temp_surface = pygame.Surface(label.get_size())
+ temp_surface.fill((192, 192, 192))
+ temp_surface.blit(label, (0, 0))
+ pygame.draw.circle(screen, (0,0,255), (100, 100), 5)
+ screen.blit(temp_surface, (100-30, 100-20))
  pygame.display.flip()
  while True:
   for event in pygame.event.get():
