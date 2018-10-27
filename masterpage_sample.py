@@ -3,7 +3,7 @@ import pygame
 import Locationpage
 import filesystem
 from sys import exit
-from tkinter import messagebox
+
 defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
 canteenfile = "canteenlist.csv"
 foodfile = "foodlist.csv"
