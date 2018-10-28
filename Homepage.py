@@ -48,6 +48,9 @@ homePage.title("NTU Food Recommendation System")
 ##bottomFrame = Frame(homePage)
 ##bottomFrame.pack()
 
+NTUlogo = PhotoImage(file="NTU_Logo_Partnership.png")
+setImage = Label(homePage, image=NTUlogo)
+
 ## Headline
 headline = Label(homePage, text="Welcome to NTU Food Recommendation System")
 headline.grid(columnspan=5)
@@ -69,6 +72,7 @@ distToDest.grid(row=1, column=1)
 sortByLocation.grid(row=1, column=2)
 sortByRank.grid(row=1, column=3)
 samplePage.grid(row=1, column=4)
+setImage.grid(columnspan=5)
 
 ## Constant loop until the 'x' button is pressed
 homePage.mainloop()
