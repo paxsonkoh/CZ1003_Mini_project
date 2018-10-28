@@ -1,9 +1,10 @@
-
+from listTable import listTable
 import pygame
+import tkinter
 from tkinter import messagebox
 from sys import exit
 import math 
-def display_getuserlocation_map(livedata):
+def display_getuserlocation_map(livedata,homePage):
  introScreenImage = pygame.image.load("NTUMAP.png")
  screen = pygame.display.set_mode((660,465))
  screen.blit(introScreenImage,(0,0))
@@ -19,15 +20,22 @@ def display_getuserlocation_map(livedata):
   pygame.draw.circle(screen, (0,0,255), (int(row[1]), int(row[2])), 5)
   screen.blit(temp_surface, (int(row[1])-30, int(row[2])-20))
  pygame.display.flip()
- 
- while True:
+ loop =True
+ while loop:
   for event in pygame.event.get():
    if event.type == pygame.QUIT:
      pygame.quit()
    elif event.type == pygame.MOUSEBUTTONUP:
-     messagebox.showinfo("User Location","mouse at (%d, %d)"%event.pos)
-     messagebox.showinfo("Nearest",livedata[0])
-     print(sort_by_location(event.pos[0],event.pos[1],livedata))
+    
+     livedata = sort_by_location(event.pos[0],event.pos[1],livedata)
+     locationPage = tkinter.Toplevel(homePage)
+     pygame.quit()
+     
+     listTable(locationPage,livedata).grid(columnspan=1)
+  
+     loop = False
+     break
+     
 def sort_by_location(x,y,livedata):
  for passnum in range(len(livedata)-1):
   swapped = False
@@ -41,7 +49,7 @@ def sort_by_location(x,y,livedata):
      livedata[i] = livedata[i+1]
      livedata[i+1] = temp
      swapped = True
-     print("pass",passnum+1, ":",livedata)
+
    if not swapped:
      return livedata
  return livedata
