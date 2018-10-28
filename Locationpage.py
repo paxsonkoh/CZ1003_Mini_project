@@ -29,9 +29,10 @@ def display_getuserlocation_map(livedata,homePage):
     
      livedata = sort_by_location(event.pos[0],event.pos[1],livedata)
      locationPage = tkinter.Toplevel(homePage)
+  
      pygame.quit()
+     listTable(locationPage,livedata).pack()
      
-     listTable(locationPage,livedata).grid(columnspan=1)
   
      loop = False
      break
