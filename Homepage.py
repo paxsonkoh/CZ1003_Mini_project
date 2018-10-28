@@ -4,6 +4,8 @@ import filesystem
 from tkinter import *
 from sys import exit
 
+pygame.init()
+
 defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
 canteenfile = "canteenlist.csv"
 foodfile = "foodlist.csv"
