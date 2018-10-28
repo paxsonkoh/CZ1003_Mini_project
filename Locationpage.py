@@ -2,7 +2,7 @@
 import pygame
 from tkinter import messagebox
 from sys import exit
-
+import math 
 def display_getuserlocation_map(livedata):
  introScreenImage = pygame.image.load("NTUMAP.png")
  screen = pygame.display.set_mode((660,465))
@@ -26,7 +26,23 @@ def display_getuserlocation_map(livedata):
      pygame.quit()
    elif event.type == pygame.MOUSEBUTTONUP:
      messagebox.showinfo("User Location","mouse at (%d, %d)"%event.pos)
-     pygame.quit()
-	 
-
+     messagebox.showinfo("Nearest",livedata[0])
+     print(sort_by_location(event.pos[0],event.pos[1],livedata))
+def sort_by_location(x,y,livedata):
+ for passnum in range(len(livedata)-1):
+  swapped = False
+  for i in range(len(livedata)-passnum-1):
+   temp_distance_current = math.sqrt(abs(x-int(livedata[i][1]))**2 +abs(y-int(livedata[i][2]))**2)
+   print(temp_distance_current)
+   temp_distance_sort = math.sqrt(abs(x-int(livedata[i+1][1]))**2 +abs(y-int(livedata[i+1][2]))**2)
+   print(temp_distance_sort)
+   if temp_distance_current>temp_distance_sort:
+     temp = livedata[i]
+     livedata[i] = livedata[i+1]
+     livedata[i+1] = temp
+     swapped = True
+     print("pass",passnum+1, ":",livedata)
+   if not swapped:
+     return livedata
+ return livedata
 
