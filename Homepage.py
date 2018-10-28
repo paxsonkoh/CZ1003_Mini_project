@@ -1,14 +1,11 @@
 import pygame
 import Locationpage
 import filesystem
-from tkinter import *
-from sys import exit
 
-try:
-    from ttk import *
-except ImportError:  # Python 3
-    from tkinter import *
-    from tkinter.ttk import *
+from tkinter import *
+from tkinter.ttk import *
+
+from sys import exit
 
 class listTable(Frame):
 
@@ -44,25 +41,6 @@ class listTable(Frame):
         self.treeview.insert('', 'end', text="Hall 2", values=('Muslim Food',
                              '3.5', '4'))
 
-## def main():
-##    root = Tk()
-##    App(root)
-##    root.mainloop()
-
-## if __name__ == '__main__':
-##    main()
-
-pygame.init()
-
-defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
-canteenfile = "canteenlist.csv"
-foodfile = "foodlist.csv"
-
-livedata = filesystem.load_to_list(canteenfile,foodfile)
-if livedata ==False:
-    filesystem.save_to_csv(defaultdata,canteenfile,foodfile)
-    livedata = filesystem.load_to_list(canteenfile,foodfile)
-
 def sample_page_button():
   
     sampledata.set(input_sampledata.get())
@@ -85,6 +63,18 @@ def sample_page_with_button():
     
     L2 = Label(samplewindow,text= "",textvariable=sampledata)
     L2.grid(columnspan=2)
+    
+
+pygame.init()
+
+defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
+canteenfile = "canteenlist.csv"
+foodfile = "foodlist.csv"
+
+livedata = filesystem.load_to_list(canteenfile,foodfile)
+if livedata ==False:
+    filesystem.save_to_csv(defaultdata,canteenfile,foodfile)
+    livedata = filesystem.load_to_list(canteenfile,foodfile)
 
 ## Create a blank window
 homePage = Tk()
