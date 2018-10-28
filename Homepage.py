@@ -4,6 +4,54 @@ import filesystem
 from tkinter import *
 from sys import exit
 
+try:
+    from ttk import *
+except ImportError:  # Python 3
+    from tkinter import *
+    from tkinter.ttk import *
+
+class listTable(Frame):
+
+    def __init__(self, parent):
+        Frame.__init__(self, parent)
+        self.CreateUI()
+        self.LoadTable()
+        self.grid(sticky = (N,S,W,E))
+        parent.grid_rowconfigure(0, weight = 1)
+        parent.grid_columnconfigure(0, weight = 1)
+
+    def CreateUI(self):
+        tv = Treeview(self)
+        tv['columns'] = ('foodName', 'foodPrice', 'foodRating')
+        tv.heading("#0", text='Sources', anchor='w')
+        tv.column("#0", anchor="w")
+        tv.heading('foodName', text='Food Name')
+        tv.column('foodName', anchor='center', width=100)
+        tv.heading('foodPrice', text='Price ($)')
+        tv.column('foodPrice', anchor='center', width=100)
+        tv.heading('foodRating', text='Rating(0-5)')
+        tv.column('foodRating', anchor='center', width=100)
+        tv.grid(sticky = (N,S,W,E))
+        self.treeview = tv
+        self.grid_rowconfigure(0, weight = 1)
+        self.grid_columnconfigure(0, weight = 1)
+
+    def LoadTable(self):
+        self.treeview.insert('', 'end', text="Hall 1", values=('Chicken Rice',
+                             '3.5', '4'))
+        self.treeview.insert('', 'end', text="Hall 1", values=('Roasted Delight',
+                             '4', '5'))
+        self.treeview.insert('', 'end', text="Hall 2", values=('Muslim Food',
+                             '3.5', '4'))
+
+## def main():
+##    root = Tk()
+##    App(root)
+##    root.mainloop()
+
+## if __name__ == '__main__':
+##    main()
+
 pygame.init()
 
 defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
@@ -74,6 +122,9 @@ distToDest.grid(row=1, column=1)
 sortByLocation.grid(row=1, column=2)
 sortByRank.grid(row=1, column=3)
 samplePage.grid(row=1, column=4)
+
+listTable(homePage).grid(columnspan=5)
+
 setImage.grid(columnspan=5)
 
 ## Constant loop until the 'x' button is pressed
