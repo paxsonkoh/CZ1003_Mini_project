@@ -7,6 +7,12 @@ from tkinter.ttk import *
 
 from sys import exit
 
+pygame.init()
+
+defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
+canteenfile = "canteenlist.csv"
+foodfile = "foodlist.csv"
+
 class listTable(Frame):
 
     def __init__(self, parent):
@@ -34,13 +40,23 @@ class listTable(Frame):
         self.grid_columnconfigure(0, weight = 1)
 
     def LoadTable(self):
-        self.treeview.insert('', 'end', text="Hall 1", values=('Chicken Rice',
-                             '3.5', '4'))
-        self.treeview.insert('', 'end', text="Hall 1", values=('Roasted Delight',
-                             '4', '5'))
-        self.treeview.insert('', 'end', text="Hall 2", values=('Muslim Food',
-                             '3.5', '4'))
+        ## self.treeview.insert('', 'end', text="Hall 1", values=('Chicken Rice',
+        ##                     '3.5', '4'))
+        ## self.treeview.insert('', 'end', text="Hall 1", values=('Roasted Delight',
+        ##                     '4', '5'))
+        ## self.treeview.insert('', 'end', text="Hall 2", values=('Muslim Food',
+        ##                     '3.5', '4'))
 
+        for list1 in range(0,len(defaultdata)): ##Cycle Through Main list
+            hallName = defaultdata[list1][0]
+            for list2 in range(0, len(defaultdata[list1][3])):   
+                foodName = defaultdata[list1][3][list2][0]
+                foodRating = defaultdata[list1][3][list2][1]
+                foodPrice = defaultdata[list1][3][list2][2]
+                self.treeview.insert('', 'end', text=hallName, values=(foodName,foodRating,foodPrice))
+
+#len(defaultdata[list1][list2])
+                        
 def sample_page_button():
   
     sampledata.set(input_sampledata.get())
@@ -63,13 +79,6 @@ def sample_page_with_button():
     
     L2 = Label(samplewindow,text= "",textvariable=sampledata)
     L2.grid(columnspan=2)
-    
-
-pygame.init()
-
-defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
-canteenfile = "canteenlist.csv"
-foodfile = "foodlist.csv"
 
 livedata = filesystem.load_to_list(canteenfile,foodfile)
 if livedata ==False:
