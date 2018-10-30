@@ -1,10 +1,10 @@
 from tkinter import *
 from tkinter.ttk import *
 
-class listTable(Frame):
+class listTable(Frame,list):
 
-    def __init__(self, page,livedata):
-        Frame.__init__(self,page)
+    def __init__(self, parent,livedata):
+        Frame.__init__(self)
       
         self.CreateUI()
         self.LoadTable(livedata)
