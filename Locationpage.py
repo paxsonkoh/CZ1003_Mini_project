@@ -1,10 +1,13 @@
-from listTable import listTable
+from listTableXY import listTableXY
 import pygame
 import tkinter
 from tkinter import messagebox
 from sys import exit
-import math 
+import math
+
 def display_getuserlocation_map(livedata,homePage):
+ pygame.init()
+ pygame.display.set_caption('Get Canteen Based on Location')
  introScreenImage = pygame.image.load("NTUMAP.png")
  screen = pygame.display.set_mode((660,465))
  screen.blit(introScreenImage,(0,0))
@@ -26,12 +29,13 @@ def display_getuserlocation_map(livedata,homePage):
    if event.type == pygame.QUIT:
      pygame.quit()
    elif event.type == pygame.MOUSEBUTTONUP:
-    
+        
      livedata = sort_by_location(event.pos[0],event.pos[1],livedata)
      locationPage = tkinter.Toplevel(homePage)
-  
+    
+     
      pygame.quit()
-     listTable(locationPage,livedata).pack()
+     listTableXY(locationPage,livedata)
      
   
      loop = False

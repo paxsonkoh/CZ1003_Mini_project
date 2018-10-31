@@ -1,28 +1,29 @@
 from tkinter import *
 from tkinter.ttk import *
 
-class listTable(Frame,list):
+class listTableFood(Frame,list):
 
-    def __init__(self, parent,livedata):
-        Frame.__init__(self)
-      
+    def __init__(self, page,livedata):
+        Frame.__init__(self,page)
+        self.root =page
         self.CreateUI()
         self.LoadTable(livedata)
         self.grid(sticky = (N,S,W,E))
-        parent.grid_rowconfigure(0, weight = 1)
-        parent.grid_columnconfigure(0, weight = 1)
+        page.grid_rowconfigure(0, weight = 1)
+        page.grid_columnconfigure(0, weight = 1)
 
     def CreateUI(self):
-        tv = Treeview(self)
+        tv = Treeview(self.root)
         tv['columns'] = ('foodName', 'foodPrice', 'foodRating')
         tv.heading("#0", text='Sources', anchor='w')
         tv.column("#0", anchor="w")
-        tv.heading('foodName', text='Food Name')
+        tv.heading('foodName', text='food Name')
         tv.column('foodName', anchor='center', width=100)
         tv.heading('foodPrice', text='Price ($)')
         tv.column('foodPrice', anchor='center', width=100)
         tv.heading('foodRating', text='Rating(0-5)')
         tv.column('foodRating', anchor='center', width=100)
+
         tv.grid(sticky = (N,S,W,E))
         self.treeview = tv
         self.grid_rowconfigure(0, weight = 1)
