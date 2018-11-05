@@ -8,7 +8,7 @@ import math
 def display_getuserlocation_map(livedata,homePage):
  pygame.init()
  pygame.display.set_caption('Get Canteen Based on Location')
- introScreenImage = pygame.image.load("NTUMAP.png")
+ introScreenImage = pygame.image.load("resources/NTUMAP.png")
  screen = pygame.display.set_mode((660,465))
  screen.blit(introScreenImage,(0,0))
  myfont = pygame.font.SysFont("monospace", 13)

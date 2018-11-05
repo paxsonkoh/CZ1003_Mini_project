@@ -10,8 +10,8 @@ from sys import exit
 
 
 defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
-canteenfile = "canteenlist.csv"
-foodfile = "foodlist.csv"
+canteenfile = "resources/canteenlist.csv"
+foodfile = "resources/foodlist.csv"
 
 livedata = filesystem.load_to_list(canteenfile,foodfile)
 if livedata ==False:
@@ -56,7 +56,7 @@ homePage.title("NTU Food Recommendation System")
 ##bottomFrame = Frame(homePage)
 ##bottomFrame.pack()
 
-NTUlogo = PhotoImage(file="NTU_Logo_Partnership.png")
+NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
 setImage = Label(homePage, image=NTUlogo)
 
 ## Headline
