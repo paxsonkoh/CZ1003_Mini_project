@@ -1,50 +1,104 @@
-import tkinter
-import pygame
-import Locationpage
-import filesystem
-from sys import exit
+class View_EditableList(object):
+    def __init__(self,root,root_row):
+        """ List with buttons to edit its contents.
+        :param root: parent widget
+        :param roow_row: row in `root'. The section takes 2 rows.
+        """
 
-defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
-canteenfile = "canteenlist.csv"
-foodfile = "foodlist.csv"
+        self.list = tkinter.Listbox(root, selectmode=tkinter.EXTENDED)
+        self.list.grid(row=root_row, sticky=(W, E))
+        root.rowconfigure(root_row, weight=1)
 
-livedata = filesystem.load_to_list(canteenfile,foodfile)
-if livedata ==False:
-    filesystem.save_to_csv(defaultdata,canteenfile,foodfile)
-    livedata = filesystem.load_to_list(canteenfile,foodfile)
+        self.frame = ttk.Frame(root)
+        self.frame.grid(row=root_row+1, sticky=(W, E))
 
-masterpage = tkinter.Tk()
-
-	 
-
-def sample_page_button():
-  
-    sampledata.set(input_sampledata.get())
-
-def sample_page_with_button():
-    
-    samplewindow =tkinter.Toplevel()
-    topframe = tkinter.Frame(samplewindow)
-    topframe.pack( side = tkinter.TOP )
-    bottomframe = tkinter.Frame(samplewindow)
-    bottomframe.pack( side = tkinter.BOTTOM )
-    L1 = tkinter.Label(samplewindow, text="Sample date input")
-    L1.pack( side = tkinter.LEFT)
-    E1 = tkinter.Entry(samplewindow, bd =5 ,textvariable=input_sampledata)
-    E1.pack(side = tkinter.LEFT)
-    B3 = tkinter.Button(bottomframe, text ="Send output", command = sample_page_button)
-    B3.pack( side = tkinter.BOTTOM)
-    L2 = tkinter.Label(bottomframe,text= "",textvariable=sampledata)
-    L2.pack( side = tkinter.BOTTOM)
+        self.add = ttk.Button(self.frame, text="+", width=5)
+        self.add.grid(row=0, column=1)
+        self.edit = ttk.Button(self.frame, text="*", width=5)
+        self.edit.grid(row=0, column=2)
+        self.del_ = ttk.Button(self.frame, text="-", width=5)
+        self.del_.grid(row=0, column=3)
+        self.up = ttk.Button(self.frame, text=u"↑", width=5)
+        self.up.grid(row=0, column=4)
+        self.down = ttk.Button(self.frame, text=u"↓", width=5)
+        self.down.grid(row=0, column=5)
+        self.frame.grid_columnconfigure(0, weight=1)
+        self.frame.grid_columnconfigure(6, weight=1)
 
 
-input_sampledata = tkinter.StringVar()
-sampledata = tkinter.StringVar()
-pygame.init()
-MasterLabel = tkinter.Label(masterpage, text="Welcome to Food NTU")
-B1 = tkinter.Button(masterpage, text ="User Location", command =lambda:Locationpage.display_getuserlocation_map(livedata))
-B2 = tkinter.Button(masterpage, text ="Sample Page", command =sample_page_with_button)
-MasterLabel.pack()
-B1.pack()
-B2.pack()
-masterpage.mainloop()
+class Presenter_EditableList(object):
+    def __init__(self,view,root):
+        """
+
+        :param view: View_EditableList
+        :param root: root widget to be used as parent for modal windows
+        """
+        self.root = root
+        self.view = view
+        view.add.configure(command=self.add)
+        view.edit.configure(command=self.edit)
+        view.del_.configure(command=self.del_)
+        view.up.configure(command=self.up)
+        view.down.configure(command=self.down)
+
+    def add(self):
+        # View_AskText is a simple dialog that asks for a text value.
+        #  see https://stackoverflow.com/questions/4083796/how-do-i-run-unittest-on-a-tkinter-app/49028688#49028688
+        #  for implementation
+        w=gui_view.View_AskText(self.root)
+        self.root.wait_window(w.top)
+        if w.value:
+            self.view.list.insert(self.view.list.size(),w.value)
+
+    def edit(self):
+        l=self.view.list
+        try:
+            [index]=l.curselection()
+        except ValueError:
+            return
+        w=gui_view.View_AskText(self.root,l.get(index))
+        self.root.wait_window(w.top)
+        if w.value:
+            l.delete(index)
+            l.insert(index,w.value)
+
+    def del_(self):
+        l=self.view.list
+        try:
+            [index]=l.curselection()
+        except ValueError:
+            return
+        l.delete(index)
+        l.select_set(max(index,l.size()-1))
+
+    def up(self):
+        l = self.view.list
+        try:
+            [index] = l.curselection()
+        except ValueError:
+            return
+        if index>0:
+            v = l.get(index)
+            l.delete(index)
+            l.insert(index-1,v)
+            l.select_set(index-1)
+
+    def down(self):
+        l = self.view.list
+        try:
+            [index] = l.curselection()
+        except ValueError:
+            return
+        if index<l.size()-1:
+            v = l.get(index)
+            l.delete(index)
+            l.insert(index+1,v)
+            l.select_set(index+1)
+
+    def getlist(self):
+        return [self.view.list.get(i) for i in range(self.view.list.size())]
+
+    def setlist(self,list_):
+        self.view.list.delete(0,tkinter.END)
+        for i,v in enumerate(list_):
+            self.view.list.insert(i,v)

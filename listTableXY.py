@@ -48,3 +48,28 @@ class listTableXY(Frame,list):
 ##                foodRating = livedata[list1][3][list2][1]
 ##                foodPrice = livedata[list1][3][list2][2]
             self.treeview.insert('', 'end', text=hallName, values=(livedata[list1][1],livedata[list1][2]))
+    def onDoubleClick(self, event):
+    # close previous popups
+        self.destroyPopups()
+
+    # what row and column was clicked on
+        rowid = self._tree.identify_row(event.y)
+        column = self._tree.identify_column(event.x)
+
+    # clicked row parent id
+        parent = self._tree.parent(rowid)
+
+    # do nothing if item is top-level        
+        if parent == '':
+            return
+
+    # get column position info
+        x,y,width,height = self._tree.bbox(rowid, column)
+
+    # y-axis offset
+        pady = height // 2
+
+    # place Entry popup properly         
+        url = self._tree.item(rowid, 'text')
+        self.entryPopup = EntryPopup(self._tree, url)
+        self.entryPopup.place( x=0, y=y+pady, anchor=W, relwidth=1)

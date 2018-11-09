@@ -1,5 +1,6 @@
 import pygame
 import Locationpage
+import Updatepage
 import filesystem
 
 from tkinter import *
@@ -73,6 +74,7 @@ myLocation = Button(homePage, text="Get My Location", command=lambda:Locationpag
 distToDest = Button(homePage, text="Distance to Destination")
 sortByLocation = Button(homePage, text="Sort Food by Location")
 sortByRank = Button(homePage, text="Sort Food by Rank")
+updateData = Button(homePage, text="Update Location",command=lambda:Updatepage.display_getupdatepage(livedata,homePage) )
 samplePage = Button(homePage, text="Sample Page", command=sample_page_with_button)
 
 myLocation.grid(row=1, column=0)
@@ -80,7 +82,7 @@ distToDest.grid(row=1, column=1)
 sortByLocation.grid(row=1, column=2)
 sortByRank.grid(row=1, column=3)
 samplePage.grid(row=1, column=4)
-
+updateData.grid(row=1, column=5)
 
 
 setImage.grid(columnspan=6)
