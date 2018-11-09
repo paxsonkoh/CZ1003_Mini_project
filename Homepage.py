@@ -1,6 +1,10 @@
 import pygame
 import Locationpage
+<<<<<<< HEAD
 import Updatepage
+=======
+import optionsPage
+>>>>>>> c841fbfd059532dfbff9063955eab5494789c54c
 import filesystem
 
 from tkinter import *
@@ -19,6 +23,7 @@ if livedata ==False:
     filesystem.save_to_csv(defaultdata,canteenfile,foodfile)
     livedata = filesystem.load_to_list(canteenfile,foodfile)
 
+print(livedata)
 #len(defaultdata[list1][list2])
                         
 def sample_page_button():
@@ -73,8 +78,12 @@ sampledata = StringVar()
 myLocation = Button(homePage, text="Get My Location", command=lambda:Locationpage.display_getuserlocation_map(livedata,homePage))
 distToDest = Button(homePage, text="Distance to Destination")
 sortByLocation = Button(homePage, text="Sort Food by Location")
+<<<<<<< HEAD
 sortByRank = Button(homePage, text="Sort Food by Rank")
 updateData = Button(homePage, text="Update Location",command=lambda:Updatepage.display_getupdatepage(livedata,homePage) )
+=======
+sortByRank = Button(homePage, text="Sort Food by Rank", command=lambda:optionsPage.sort_food_options_page(livedata, homePage))
+>>>>>>> c841fbfd059532dfbff9063955eab5494789c54c
 samplePage = Button(homePage, text="Sample Page", command=sample_page_with_button)
 
 myLocation.grid(row=1, column=0)

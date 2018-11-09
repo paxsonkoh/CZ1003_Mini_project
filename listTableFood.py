@@ -15,7 +15,7 @@ class listTableFood(Frame,list):
     def CreateUI(self):
         tv = Treeview(self.root)
         tv['columns'] = ('foodName', 'foodPrice', 'foodRating')
-        tv.heading("#0", text='Sources', anchor='w')
+        tv.heading("#0", text='Hall Name', anchor='w')
         tv.column("#0", anchor="w")
         tv.heading('foodName', text='food Name')
         tv.column('foodName', anchor='center', width=100)
