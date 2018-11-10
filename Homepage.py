@@ -9,8 +9,6 @@ from tkinter.ttk import *
 
 from sys import exit
 
-
-
 defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
 canteenfile = "resources/canteenlist.csv"
 foodfile = "resources/foodlist.csv"
@@ -20,31 +18,31 @@ if livedata ==False:
     filesystem.save_to_csv(defaultdata,canteenfile,foodfile)
     livedata = filesystem.load_to_list(canteenfile,foodfile)
 
-print(livedata)
-#len(defaultdata[list1][list2])
+##print(livedata)
+##len(defaultdata[list1][list2])
                         
-def sample_page_button():
-  
-    sampledata.set(input_sampledata.get())
-
-def sample_page_with_button():
-    
-    samplewindow = Toplevel()
-
-    headline = Label(samplewindow, text="Sample Page")
-    headline.grid(columnspan=2)
-    
-    L1 = Label(samplewindow, text="Sample date input")
-    L1.grid(row=1, column=0)
-    
-    E1 = Entry(samplewindow, bd =5 ,textvariable=input_sampledata)
-    E1.grid(row=1, column=1)
-    
-    B3 = Button(samplewindow, text ="Send output", command = sample_page_button)
-    B3.grid(columnspan=2)
-    
-    L2 = Label(samplewindow,text= "",textvariable=sampledata)
-    L2.grid(columnspan=2)
+##def sample_page_button():
+##  
+##    sampledata.set(input_sampledata.get())
+##
+##def sample_page_with_button():
+##    
+##    samplewindow = Toplevel()
+##
+##    headline = Label(samplewindow, text="Sample Page")
+##    headline.grid(columnspan=2)
+##    
+##    L1 = Label(samplewindow, text="Sample date input")
+##    L1.grid(row=1, column=0)
+##    
+##    E1 = Entry(samplewindow, bd =5 ,textvariable=input_sampledata)
+##    E1.grid(row=1, column=1)
+##    
+##    B3 = Button(samplewindow, text ="Send output", command = sample_page_button)
+##    B3.grid(columnspan=2)
+##    
+##    L2 = Label(samplewindow,text= "",textvariable=sampledata)
+##    L2.grid(columnspan=2)
 
 
 ## Create a blank window
@@ -81,13 +79,13 @@ updateData = Button(homePage, text="Update Location",command=lambda:Updatepage.d
 
 sortByRank = Button(homePage, text="Sort Food by Rank", command=lambda:optionsPage.sort_food_options_page(livedata, homePage))
 
-samplePage = Button(homePage, text="Sample Page", command=sample_page_with_button)
+sortByPrice = Button(homePage, text="Sort Food by Price", command=lambda:optionsPage.sort_food_options_page(livedata, homePage))
 
 myLocation.grid(row=1, column=0)
 distToDest.grid(row=1, column=1)
 sortByLocation.grid(row=1, column=2)
 sortByRank.grid(row=1, column=3)
-samplePage.grid(row=1, column=4)
+sortByPrice.grid(row=1, column=4)
 updateData.grid(row=1, column=5)
 
 
