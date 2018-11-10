@@ -9,18 +9,27 @@ from sys import exit
                         
 def sort_food_options_page(livedata, homePage):
 
-    listOfFood = []
+    listOfFood = ["Please select from drop down list"]
+    checkCount = 0
 
     for list1 in range(0,len(livedata)): ##Cycle Through Main list
             hallName = livedata[list1][0]
             for list2 in range(0, len(livedata[list1][3])):   
                 foodName = livedata[list1][3][list2][0]
-                print(foodName)
-                listOfFood.append(foodName)
+                if(len(listOfFood) == 0):
+                    print("The length of the list is: " + str(len(listOfFood)))
+                    listOfFood.append(foodName)
+                else:
+                    for list3 in range(0, len(listOfFood), 1):
+                        if (foodName == listOfFood[list3]):
+                            checkCount = checkCount + 1
+                    if (checkCount > 0):
+                        checkCount = 0
+                    else:
+                        listOfFood.append(foodName)
                 
     print(listOfFood)
-                
-                
+    
     ## Create a blank window
     sortFoodPage = Toplevel()
     sortFoodPage.title("NTU Food Recommendation System")
@@ -68,7 +77,7 @@ def sort_food_options_page(livedata, homePage):
     emptyLine2 = Label(sortFoodPage, text=" ")
     emptyLine2.grid(columnspan=5)
     
-    foodDropListButton = Button(sortFoodPage, text="Submit", command = ok)
+    foodDropListButton = Button(sortFoodPage, text="Submit", command=lambda:Locationpage.display_getuserlocation_map(livedata,homePage))
     foodDropListButton.grid(columnspan=5)
     
 
