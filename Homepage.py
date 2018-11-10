@@ -62,7 +62,7 @@ setImage = Label(homePage, image=NTUlogo)
 
 ## Headline
 headline = Label(homePage, text="Welcome to NTU Food Recommendation System")
-headline.grid(columnspan=6)
+headline.grid(columnspan=4)
 
 ## define variables
 input_sampledata = StringVar()
@@ -71,9 +71,6 @@ sampledata = StringVar()
 ## Create buttons
 
 myLocation = Button(homePage, text="Get My Location", command=lambda:Locationpage.display_getuserlocation_map(livedata,homePage))
-distToDest = Button(homePage, text="Distance to Destination")
-sortByLocation = Button(homePage, text="Sort Food by Location")
-
 
 updateData = Button(homePage, text="Update Location",command=lambda:Updatepage.display_getupdatepage(livedata,homePage) )
 
@@ -82,14 +79,13 @@ sortByRank = Button(homePage, text="Sort Food by Rank", command=lambda:optionsPa
 sortByPrice = Button(homePage, text="Sort Food by Price", command=lambda:optionsPage.sort_food_options_page(livedata, homePage))
 
 myLocation.grid(row=1, column=0)
-distToDest.grid(row=1, column=1)
-sortByLocation.grid(row=1, column=2)
-sortByRank.grid(row=1, column=3)
-sortByPrice.grid(row=1, column=4)
-updateData.grid(row=1, column=5)
+sortByRank.grid(row=1, column=1)
+sortByPrice.grid(row=1, column=2)
+updateData.grid(row=1, column=3)
 
 
-setImage.grid(columnspan=6)
+
+setImage.grid(columnspan=4)
 
 ## Constant loop until the 'x' button is pressed
 homePage.mainloop()
