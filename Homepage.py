@@ -62,7 +62,7 @@ setImage = Label(homePage, image=NTUlogo)
 
 ## Headline
 headline = Label(homePage, text="Welcome to NTU Food Recommendation System")
-headline.grid(columnspan=5)
+headline.grid(columnspan=6)
 
 ## define variables
 input_sampledata = StringVar()
