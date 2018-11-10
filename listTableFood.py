@@ -37,10 +37,17 @@ class listTableFood(Frame,list):
         ## self.treeview.insert('', 'end', text="Hall 2", values=('Muslim Food',
         ##                     '3.5', '4'))
 
-        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+##        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+##            hallName = livedata[list1][0]
+##            for list2 in range(0, len(livedata[list1][3])):   
+##                foodName = livedata[list1][3][list2][0]
+##                foodRating = livedata[list1][3][list2][1]
+##                foodPrice = livedata[list1][3][list2][2]
+##                self.treeview.insert('', 'end', text=hallName, values=(foodName,foodRating,foodPrice))
+
+        for list1 in range(0,len(livedata)):
             hallName = livedata[list1][0]
-            for list2 in range(0, len(livedata[list1][3])):   
-                foodName = livedata[list1][3][list2][0]
-                foodRating = livedata[list1][3][list2][1]
-                foodPrice = livedata[list1][3][list2][2]
-                self.treeview.insert('', 'end', text=hallName, values=(foodName,foodRating,foodPrice))
+            foodName = livedata[list1][1]
+            foodRating = livedata[list1][2]
+            foodPrice = livedata[list1][3]            
+            self.treeview.insert('', 'end', text=hallName, values=(foodName,foodRating,foodPrice))
