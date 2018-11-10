@@ -74,9 +74,9 @@ myLocation = Button(homePage, text="Get My Location", command=lambda:Locationpag
 
 updateData = Button(homePage, text="Update Location",command=lambda:Updatepage.display_getupdatepage(livedata,homePage) )
 
-sortByRank = Button(homePage, text="Sort Food by Rank", command=lambda:optionsPage.sort_food_options_page(livedata, homePage))
+sortByRank = Button(homePage, text="Sort Food by Rank", command=lambda:optionsPage.sort_food_rank_page(livedata, homePage))
 
-sortByPrice = Button(homePage, text="Sort Food by Price", command=lambda:optionsPage.sort_food_options_page(livedata, homePage))
+sortByPrice = Button(homePage, text="Sort Food by Price", command=lambda:optionsPage.sort_food_price_page(livedata, homePage))
 
 myLocation.grid(row=1, column=0)
 sortByRank.grid(row=1, column=1)
