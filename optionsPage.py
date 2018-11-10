@@ -48,24 +48,43 @@ def sort_food_by_rank(livedata, homePage, submitVariable):
     ##listOfFood = ["Please select from drop down list"]
     ##checkCount = 0
 
-    for list1 in range(0,len(livedata)): ##Cycle Through Main list
-            hallName = livedata[list1][0]
-            for list2 in range(0, len(livedata[list1][3])):   
-                foodName = livedata[list1][3][list2][0]
-                foodPrice = livedata[list1][3][list2][1]
-                foodRating = livedata[list1][3][list2][2]
-                if (foodName == submitVariable):
+    if (submitVariable != "All"):
+        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+                hallName = livedata[list1][0]
+                for list2 in range(0, len(livedata[list1][3])):   
+                    foodName = livedata[list1][3][list2][0]
+                    foodPrice = livedata[list1][3][list2][1]
+                    foodRating = livedata[list1][3][list2][2]
+                    if (foodName == submitVariable):
+                        foodList.append(hallName)
+                        foodList.append(foodName)
+                        foodList.append(foodRating)
+                        foodList.append(foodPrice)
+                        optionRanking.append(foodList)
+                        foodList=[]
+                            
+        bubbleSortRank(optionRanking)
+        
+        listTableFood(optionsPage,optionRanking)
+
+    else:
+        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+                hallName = livedata[list1][0]
+                for list2 in range(0, len(livedata[list1][3])):   
+                    foodName = livedata[list1][3][list2][0]
+                    foodPrice = livedata[list1][3][list2][1]
+                    foodRating = livedata[list1][3][list2][2]
                     foodList.append(hallName)
                     foodList.append(foodName)
                     foodList.append(foodRating)
                     foodList.append(foodPrice)
                     optionRanking.append(foodList)
                     foodList=[]
-                            
-    bubbleSortRank(optionRanking)
-    
-    listTableFood(optionsPage,optionRanking)
-  
+
+        bubbleSortRank(optionRanking)
+        
+        listTableFood(optionsPage,optionRanking)
+        
 def sort_food_by_price(livedata, homePage, submitVariable):
 
     optionsPage = Toplevel()
@@ -76,43 +95,63 @@ def sort_food_by_price(livedata, homePage, submitVariable):
     ##listOfFood = ["Please select from drop down list"]
     ##checkCount = 0
 
-    for list1 in range(0,len(livedata)): ##Cycle Through Main list
-            hallName = livedata[list1][0]
-            for list2 in range(0, len(livedata[list1][3])):   
-                foodName = livedata[list1][3][list2][0]
-                foodPrice = livedata[list1][3][list2][1]
-                foodRating = livedata[list1][3][list2][2]
-                if (foodName == submitVariable):
+    if (submitVariable != "All"):
+        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+                hallName = livedata[list1][0]
+                for list2 in range(0, len(livedata[list1][3])):   
+                    foodName = livedata[list1][3][list2][0]
+                    foodPrice = livedata[list1][3][list2][1]
+                    foodRating = livedata[list1][3][list2][2]
+                    if (foodName == submitVariable):
+                        foodList.append(hallName)
+                        foodList.append(foodName)
+                        foodList.append(foodRating)
+                        foodList.append(foodPrice)
+                        optionRanking.append(foodList)
+                        foodList=[]
+                                
+        bubbleSortPrice(optionRanking)
+        
+        listTableFood(optionsPage,optionRanking)
+
+    else:
+        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+                hallName = livedata[list1][0]
+                for list2 in range(0, len(livedata[list1][3])):   
+                    foodName = livedata[list1][3][list2][0]
+                    foodPrice = livedata[list1][3][list2][1]
+                    foodRating = livedata[list1][3][list2][2]
                     foodList.append(hallName)
                     foodList.append(foodName)
                     foodList.append(foodRating)
                     foodList.append(foodPrice)
                     optionRanking.append(foodList)
                     foodList=[]
-                            
-    bubbleSortPrice(optionRanking)
-    
-    listTableFood(optionsPage,optionRanking)
+                                
+        bubbleSortPrice(optionRanking)
+        
+        listTableFood(optionsPage,optionRanking)        
+        
                         
 def sort_food_rank_page(livedata, homePage):
 
-    listOfFood = ["Please select from drop down list"]
+    listOfFood = ["Please select from drop down list","All"]
     checkCount = 0
 
     for list1 in range(0,len(livedata)): ##Cycle Through Main list
             hallName = livedata[list1][0]
             for list2 in range(0, len(livedata[list1][3])):   
                 foodName = livedata[list1][3][list2][0]
-                if(len(listOfFood) == 0):
-                    listOfFood.append(foodName)
+##                if(len(listOfFood) == 0):
+##                    listOfFood.append(foodName)
+##                else:
+                for list3 in range(0, len(listOfFood), 1):
+                    if (foodName == listOfFood[list3]):
+                        checkCount = checkCount + 1
+                if (checkCount > 0):
+                    checkCount = 0
                 else:
-                    for list3 in range(0, len(listOfFood), 1):
-                        if (foodName == listOfFood[list3]):
-                            checkCount = checkCount + 1
-                    if (checkCount > 0):
-                        checkCount = 0
-                    else:
-                        listOfFood.append(foodName)
+                    listOfFood.append(foodName)
     
     ## Create a blank window
     sortFoodPage = Toplevel()
@@ -151,24 +190,23 @@ def sort_food_rank_page(livedata, homePage):
 
 def sort_food_price_page(livedata, homePage):
 
-    listOfFood = ["Please select from drop down list"]
+    listOfFood = ["Please select from drop down list","All"]
     checkCount = 0
 
     for list1 in range(0,len(livedata)): ##Cycle Through Main list
             hallName = livedata[list1][0]
             for list2 in range(0, len(livedata[list1][3])):   
                 foodName = livedata[list1][3][list2][0]
-                if(len(listOfFood) == 0):
-                    print("The length of the list is: " + str(len(listOfFood)))
-                    listOfFood.append(foodName)
+##                if(len(listOfFood) == 0):
+##                    listOfFood.append(foodName)
+##                else:
+                for list3 in range(0, len(listOfFood), 1):
+                    if (foodName == listOfFood[list3]):
+                        checkCount = checkCount + 1
+                if (checkCount > 0):
+                    checkCount = 0
                 else:
-                    for list3 in range(0, len(listOfFood), 1):
-                        if (foodName == listOfFood[list3]):
-                            checkCount = checkCount + 1
-                    if (checkCount > 0):
-                        checkCount = 0
-                    else:
-                        listOfFood.append(foodName)
+                    listOfFood.append(foodName)
     
     ## Create a blank window
     sortFoodPage = Toplevel()
@@ -185,7 +223,7 @@ def sort_food_price_page(livedata, homePage):
     emptyLine1.grid(columnspan=5)
 
     foodVariable = StringVar(sortFoodPage)
-    foodVariable.set(listOfFood[0])
+    foodVariable.set(listOfFood[0]) ##default value
 
     foodDropListLabel = Label(sortFoodPage, text="Please Select Food Item: ")
     foodDropListLabel.grid(columnspan=5)
