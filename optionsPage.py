@@ -15,6 +15,7 @@ def sort_food_options_page(livedata, homePage):
             hallName = livedata[list1][0]
             for list2 in range(0, len(livedata[list1][3])):   
                 foodName = livedata[list1][3][list2][0]
+                print(foodName)
                 listOfFood.append(foodName)
                 
     print(listOfFood)
