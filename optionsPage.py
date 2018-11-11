@@ -135,7 +135,7 @@ def sort_food_by_price(livedata, homePage, submitVariable):
                         
 def sort_food_rank_page(livedata, homePage):
 
-    listOfFood = ["Please select from drop down list","All"]
+    listOfFood = ["Select from List","All"]
     checkCount = 0
 
     for list1 in range(0,len(livedata)): ##Cycle Through Main list
@@ -190,7 +190,7 @@ def sort_food_rank_page(livedata, homePage):
 
 def sort_food_price_page(livedata, homePage):
 
-    listOfFood = ["Please select from drop down list","All"]
+    listOfFood = ["Select from List","All"]
     checkCount = 0
 
     for list1 in range(0,len(livedata)): ##Cycle Through Main list
