@@ -39,10 +39,10 @@ def display_getupdatepage(livedata,homePage):
     e1.grid(row=0, column=1)
     e2.grid(row=1, column=1)
 
-    update = tkinter.Button(bottomframe, text="Update",command=lambda:Update(listVariable.get(),e2,livedata,updatepage) )
+    update = tkinter.Button(bottomframe, text="Update",command=lambda:Update(listVariable.get(),e2,livedata,Topframe,updatepage,update,bottomframe) )
     update.grid(row=1, column=2)
 
-def Update(hallSelection,e2,livedata,updatepage):
+def Update(hallSelection,e2,livedata,Topframe,updatepage,update,bottomframe):
     for list1 in range(0,len(livedata)): ##Cycle Through Main list
         hallName = livedata[list1][0]
         if(hallName == hallSelection):
@@ -52,5 +52,10 @@ def Update(hallSelection,e2,livedata,updatepage):
     canteenfile = "resources/canteenlist.csv"
     foodfile = "resources/foodlist.csv"
     filesystem.save_to_csv(livedata,canteenfile,foodfile)
-    updatepage.destroy()
-
+    livedata = filesystem.load_to_list(canteenfile,foodfile)
+    Topframe.destroy()
+    Topframe = tkinter.Frame(updatepage)
+    Topframe.pack()
+    tkinter.messagebox.showinfo("Update Complete", "Application will close please reopen")
+    updatepage.quit()
+ 

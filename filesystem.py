@@ -6,17 +6,22 @@ from pathlib import Path
 import csv
 def save_to_csv(res,canteenfile,foodfile):
     
-
+    print(res)
     canteenlist,foodlist = open(canteenfile, 'w',newline=''),open(foodfile, 'w',newline='')
+    datatablelist = res
     with canteenlist,foodlist:
         writer,writer2 = csv.writer(canteenlist),csv.writer(foodlist)
-
-        for row in res:
+	
+        for row in datatablelist:
             fooddata =row.pop()
+            print(fooddata)
             for row2 in fooddata:
                 row2.insert(0,row[0])
                 writer2.writerow(row2)
             writer.writerow(row)
+    canteenlist.close()
+    foodlist.close()
+	
 def load_to_list(canteenfile,foodfile):
     datalist = list()
     my_file_1 = Path(canteenfile)
