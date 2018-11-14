@@ -301,7 +301,7 @@ def sort_food_price_page(livedata, homePage):
     setImage = Label(sortFoodPage, image=NTUlogo)
 
     ## Headline
-    headline = Label(sortFoodPage, text="Sort Food By Rank")
+    headline = Label(sortFoodPage, text="Sort Food By Price")
     headline.grid(columnspan=5)
 
     emptyLine1 = Label(sortFoodPage, text=" ")

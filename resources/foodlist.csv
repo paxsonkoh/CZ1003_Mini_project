@@ -1,4 +1,21 @@
-hall 1,chicken rice,1,1
-hall 1,duck rice,2,2
-hall 2,chicken rice,2,2
-hall 2,duck rice,1,1
+Hall 1,Chicken Rice,3.5,4.3
+Hall 1,Duck Rice,4.0,3.5
+Hall 1,Yong Tau Fu,4.0,4.5
+Hall 1,Nasi Lemak,3.5,3.5
+Hall 2,Chicken Rice,4.5,3.3
+Hall 2,Duck Rice,3.8,4.9
+Hall 2,Roti Prata,2.0,3.6
+Hall 3,Chicken Rice,3.0,3.8
+Hall 3,Roasted Pork Rice,3.0,4.0
+Hall 3,Double Boiled Soup of The Day,4.5,4.0
+Hall 3,Yong Tau Fu,4.0,3.6
+Hall 3,Chicken Chop,5.5,4.0
+Hall 4,Chicken Rice,2.8,3.1
+Hall 4,Duck Rice,4.0,4.2
+Hall 4,Nasi Lemak,4.0,3.3
+Binjai,Chicken Rice,3.0,2.9
+Binjai,Fish & Chips,6.5,3.9
+Pioneer,Chicken Rice,4.0,4.5
+Pioneer,Duck Rice,4.0,2.9
+Pioneer,Mala,7.0,4.6
+Pioneer,Bak Kut Teh,5.5,4.9

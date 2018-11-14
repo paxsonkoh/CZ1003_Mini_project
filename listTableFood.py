@@ -48,6 +48,6 @@ class listTableFood(Frame,list):
         for list1 in range(0,len(livedata)):
             hallName = livedata[list1][0]
             foodName = livedata[list1][1]
-            foodRating = livedata[list1][2]
-            foodPrice = livedata[list1][3]            
+            foodPrice = livedata[list1][2]
+            foodRating = livedata[list1][3]
             self.treeview.insert('', 'end', text=hallName, values=(foodName,foodRating,foodPrice))
