@@ -9,7 +9,12 @@ from tkinter.ttk import *
 
 from sys import exit
 
-defaultdata = [["hall 1",100,100,[["chicken rice",1,1],["duck rice",2,2]]],["hall 2",200,200,[["chicken rice",2,2],["duck rice",1,1]]]]
+defaultdata = [["Hall 1",100,100,[["Chicken Rice",3.50,4.3],["Duck Rice",4.00,3.5],["Yong Tau Fu",4.00,4.5],["Nasi Lemak",3.50,3.5]]]
+               ,["Hall 2",200,200,[["Chicken Rice",4.50,3.3],["Duck Rice",3.80,4.9],["Roti Prata",2.00,3.6]]]
+               ,["Hall 3",200,200,[["Chicken Rice",3.00,3.8],["Roasted Pork Rice",3.00,4.0],["Double Boiled Soup of The Day",4.50,4.0],["Yong Tau Fu",4.00,3.6],["Chicken Chop",5.50,4.0]]]
+               ,["Hall 4",200,200,[["Chicken Rice",2.80,3.1],["Duck Rice",4.00,4.2],["Nasi Lemak",4.00,3.3]]]
+               ,["Binjai",200,200,[["Chicken Rice",3.00,2.9],["Fish & Chips",6.50,3.9]]]
+               ,["Pioneer",200,200,[["Chicken Rice",4.00,4.5],["Duck Rice",4.00,2.9],["Mala",7.00,4.6],["Bak Kut Teh",5.50,4.9]]]]
 canteenfile = "resources/canteenlist.csv"
 foodfile = "resources/foodlist.csv"
 
