@@ -128,7 +128,7 @@ def sort_food_by_rank(livedata, homePage, submitVariable):
         
         listTableFood(optionsPage,optionRanking)
         
-def sort_food_by_price(livedata, homePage, submitVariable):
+def sort_food_by_price(livedata, homePage, submitVariable, priceVariable):
 
     optionsPage = Toplevel()
 
@@ -138,7 +138,7 @@ def sort_food_by_price(livedata, homePage, submitVariable):
     ##listOfFood = ["Please select from drop down list"]
     ##checkCount = 0
 
-    if (submitVariable != "All"):
+    if (submitVariable != "All" and priceVariable == "All"):
         for list1 in range(0,len(livedata)): ##Cycle Through Main list
                 hallName = livedata[list1][0]
                 for list2 in range(0, len(livedata[list1][3])):   
@@ -146,6 +146,44 @@ def sort_food_by_price(livedata, homePage, submitVariable):
                     foodPrice = livedata[list1][3][list2][1]
                     foodRating = livedata[list1][3][list2][2]
                     if (foodName == submitVariable):
+                        foodList.append(hallName)
+                        foodList.append(foodName)
+                        foodList.append(foodRating)
+                        foodList.append(foodPrice)
+                        optionRanking.append(foodList)
+                        foodList=[]
+                                
+        bubbleSortPrice(optionRanking)
+        
+        listTableFood(optionsPage,optionRanking)
+
+    elif (submitVariable == "All" and priceVariable != "All"):
+        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+                hallName = livedata[list1][0]
+                for list2 in range(0, len(livedata[list1][3])):   
+                    foodName = livedata[list1][3][list2][0]
+                    foodPrice = livedata[list1][3][list2][1]
+                    foodRating = livedata[list1][3][list2][2]
+                    if (float(foodPrice) < float(priceVariable)):
+                        foodList.append(hallName)
+                        foodList.append(foodName)
+                        foodList.append(foodRating)
+                        foodList.append(foodPrice)
+                        optionRanking.append(foodList)
+                        foodList=[]
+                                
+        bubbleSortPrice(optionRanking)
+        
+        listTableFood(optionsPage,optionRanking)
+
+    elif (submitVariable != "All" and priceVariable != "All"):
+        for list1 in range(0,len(livedata)): ##Cycle Through Main list
+                hallName = livedata[list1][0]
+                for list2 in range(0, len(livedata[list1][3])):   
+                    foodName = livedata[list1][3][list2][0]
+                    foodPrice = livedata[list1][3][list2][1]
+                    foodRating = livedata[list1][3][list2][2]
+                    if (foodName == submitVariable and float(foodPrice) < float(priceVariable)):
                         foodList.append(hallName)
                         foodList.append(foodName)
                         foodList.append(foodRating)
@@ -276,6 +314,8 @@ def sort_food_rank_page(livedata, homePage):
 def sort_food_price_page(livedata, homePage):
 
     listOfFood = ["Select from List","All"]
+    priceRange = ["Select from Price","All", 2.00, 3.00, 4.00, 5.00
+                  , 6.00, 7.00, 8.00, 9.00, 10.00]
     checkCount = 0
 
     for list1 in range(0,len(livedata)): ##Cycle Through Main list
@@ -318,8 +358,20 @@ def sort_food_price_page(livedata, homePage):
 
     emptyLine2 = Label(sortFoodPage, text=" ")
     emptyLine2.grid(columnspan=5)
+
+    priceVariable = StringVar(sortFoodPage)
+    priceVariable.set(priceRange[0]) ##default value
+
+    priceDropListLabel = Label(sortFoodPage, text="Price Range (Below $): ")
+    priceDropListLabel.grid(columnspan=5)
     
-    foodDropListButton = Button(sortFoodPage, text="Submit", command=lambda:sort_food_by_price(livedata,homePage,foodVariable.get()))
+    priceDropList = OptionMenu(sortFoodPage, priceVariable, *priceRange)
+    priceDropList.grid(columnspan=5)
+
+    emptyLine2 = Label(sortFoodPage, text=" ")
+    emptyLine2.grid(columnspan=5)
+    
+    foodDropListButton = Button(sortFoodPage, text="Submit", command=lambda:sort_food_by_price(livedata,homePage,foodVariable.get(), priceVariable.get()))
     foodDropListButton.grid(columnspan=5)
     
 
