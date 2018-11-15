@@ -1,21 +1,100 @@
-Hall 1,Chicken Rice,3.5,4.3
-Hall 1,Duck Rice,4.0,3.5
-Hall 1,Yong Tau Fu,4.0,4.5
-Hall 1,Nasi Lemak,3.5,3.5
-Hall 2,Chicken Rice,4.5,3.3
-Hall 2,Duck Rice,3.8,4.9
-Hall 2,Roti Prata,2.0,3.6
-Hall 3,Chicken Rice,3.0,3.8
-Hall 3,Roasted Pork Rice,3.0,4.0
-Hall 3,Double Boiled Soup of The Day,4.5,4.0
-Hall 3,Yong Tau Fu,4.0,3.6
-Hall 3,Chicken Chop,5.5,4.0
-Hall 4,Chicken Rice,2.8,3.1
-Hall 4,Duck Rice,4.0,4.2
-Hall 4,Nasi Lemak,4.0,3.3
-Binjai,Chicken Rice,3.0,2.9
-Binjai,Fish & Chips,6.5,3.9
-Pioneer,Chicken Rice,4.0,4.5
-Pioneer,Duck Rice,4.0,2.9
-Pioneer,Mala,7.0,4.6
-Pioneer,Bak Kut Teh,5.5,4.9
+Hall 1 Food Court,Steamed/Roasted Chicken Rice,2.8,4
+Hall 1 Food Court,Duck Rice,4.0,2.5
+Hall 1 Food Court,Japanese Fried Chicken Curry Rice,5.0,4.9
+Hall 1 Food Court,Sambal Spaghett,4.6,4.9
+Hall 1 Food Court,Grilled Chicken with Satay Sauce,5.8,4.7
+Hall 1 Food Court,Nasi Lemak,3.5,3.5
+Hall 1 Food Court,Yong Tau Fu,4.0,4.5
+Hall 1 Food Court,Mee Siam,2.9,3
+Hall 1 Food Court,Bak Kut Teh,5.5,4.5
+Hall 1 Food Court,Roti Prata,2.0,3.6
+Hall 2 Food Court,Ayam Penyet,4.5,4.3
+Hall 2 Food Court,Duck Rice,3.2,3.4
+Hall 2 Food Court,Xiao Long Bao,4.3,5
+Hall 2 Food Court,Ice Cream Waffles,2.5,4
+Hall 2 Food Court,Steamed/Roasted Chicken Rice,2.8,5
+Hall 2 Food Court,Yong Tau Foo,4.0,4
+Hall 2 Food Court,Green Salad,3.9,4
+Hall 2 Food Court,Miso Cream Pasta,4.6,3.2
+Hall 2 Food Court,Black Pepper Chicken,6.0,3.8
+Hall 2 Food Court,Dry Banmian,3.0,4.1
+Hall 9 Food Court,Steamed/Roasted Chicken Rice,3.0,3.1
+Hall 9 Food Court,Ayam Penyet,4.5,4.8
+Hall 9 Food Court,Beef Hor Fun,4.5,2.8
+Hall 9 Food Court,Sambal Fish Fillet Rice,4.0,3.2
+Hall 9 Food Court,Japanese Tonkatsu Original Curry Rice,5.0,4.7
+Hall 9 Food Court,Tonkatsu Ramen,5.5,4.9
+Hall 9 Food Court,Mee Siam,3.0,3.8
+Hall 9 Food Court,Roti Prata,2.0,4.2
+Hall 9 Food Court,Dry Banmian,3.0,4.6
+Hall 9 Food Court,Chicken Chop Rice,5.0,4.2
+Hall 11 Food Court,Ice Cream Waffles,2.3,5
+Hall 11 Food Court,Ma La Xiang Guo,4.8,4.7
+Hall 11 Food Court,Bibimbap Beef,3.8,4
+Hall 11 Food Court,Sambal Spaghett,4.8,4
+Hall 11 Food Court,Nasi Lemak,3.8,4
+Hall 11 Food Court,Miso Cream Pasta,4.6,4.2
+Hall 11 Food Court,Beef Hor Fun,4.5,4
+Hall 11 Food Court,Green Curry Chicken Rice,5.5,4.7
+Hall 11 Food Court,Ba Chor Mee,3.0,4.7
+Hall 11 Food Court,Steamed/Roasted Chicken Rice,2.5,3
+Hall 16 Food Court,Tonkatsu Ramen,5.0,4.2
+Hall 16 Food Court,Mee Siam,2.9,3.3
+Hall 16 Food Court,Bibimbap Beef,3.8,4.3
+Hall 16 Food Court,Chicken Chop Rice,4.5,4.6
+Hall 16 Food Court,Hotplate Chicken Fuyong,3.6,4.8
+Hall 16 Food Court,Carbonara,5.5,3.9
+Hall 16 Food Court,Ba Chor Mee,2.8,3.9
+Hall 16 Food Court,Bee Hoon Kway,2.8,3.7
+Hall 16 Food Court,Fried beef kway teow,5.0,4.8
+Hall 16 Food Court,Salted Egg Yolk Cereal Chicken Rice,4.8,5
+North Hill Food Court,Steamed/Roasted Chicken Rice,2.8,2
+North Hill Food Court,Black Pepper Chicken,6.5,4.3
+North Hill Food Court,Mee Siam,2.9,4
+North Hill Food Court,Roti Prata,2.0,2.7
+North Hill Food Court,Beef Hor Fun,4.5,3.7
+North Hill Food Court,Ba Chor Mee,3.3,3.7
+North Hill Food Court,Hotplate Chicken Fuyong,4.5,4.5
+North Hill Food Court,Prawn paste chicken,9.9,4.8
+North Hill Food Court,Liang Pi + Rou Jia Mou,3.8,4.6
+North Hill Food Court,Duck Rice,3.0,3.6
+Ananda Kitchen,Steamed/Roasted Chicken Rice,2.8,4.1
+Ananda Kitchen,Japanese Tonkatsu Original Curry Rice,5.0,4.2
+Ananda Kitchen,Miso Cream Pasta,4.6,3
+Ananda Kitchen,Beef Hor Fun,4.0,1.6
+Ananda Kitchen,Hotplate Chicken Fuyong,4.3,3.8
+Ananda Kitchen,Fried beef kway teow,4.5,4.7
+Ananda Kitchen,Golden Fish & Chips,12.8,5
+Ananda Kitchen,Salted Egg Yolk Cereal Chicken Rice,5.0,4.1
+Ananda Kitchen,Prawn Noodles,2.5,4.9
+Ananda Kitchen,Western Chicken Katsudon,4.5,4.9
+KouFu @ South Spine,Yong Tau Foo,4.0,5
+KouFu @ South Spine,Ice Cream Waffles,2.5,3.2
+KouFu @ South Spine,Steamed/Roasted Chicken Rice,2.5,3
+KouFu @ South Spine,Green Salad,4.4,3.4
+KouFu @ South Spine,Green Curry Chicken Rice,4.8,3.1
+KouFu @ South Spine,Ba Chor Mee,3.3,4.8
+KouFu @ South Spine,Prawn paste chicken,10.0,3.6
+KouFu @ South Spine,Bee Hoon Kway,3.3,4
+KouFu @ South Spine,Prawn Noodles,2.8,3.5
+KouFu @ South Spine,Tonkatsu Ramen,5.5,4.6
+North Spine Food Court,Mee Siam,2.5,3
+North Spine Food Court,Steamed/Roasted Chicken Rice,2.8,3
+North Spine Food Court,Japanese Fried Chicken Curry Rice,5.0,2.3
+North Spine Food Court,Yong Tau Foo,4.7,4.4
+North Spine Food Court,Carbonara,6.0,4.3
+North Spine Food Court,Green Curry Chicken Rice,5.0,4.9
+North Spine Food Court,Ba Chor Mee,2.5,4.3
+North Spine Food Court,Fried beef kway teow,3.6,3.2
+North Spine Food Court,Salted Egg Yolk Cereal Chicken Rice,5.5,4.8
+North Spine Food Court,Liang Pi + Rou Jia Mou,4.0,4.8
+Hall 10 Food Court,Ke Kou Mian,3.5,4.7
+Hall 10 Food Court,Bibimbap Beef,4.0,4
+Hall 10 Food Court,Prawn Noodles,3.0,4.1
+Hall 10 Food Court,Western Chicken Katsudon,5.5,4.8
+Hall 10 Food Court,Japanese Tonkatsu Original Curry Rice,4.8,4.5
+Hall 10 Food Court,Black Pepper Chicken,5.5,4.3
+Hall 10 Food Court,Yong Tau Foo,4.3,4.1
+Hall 10 Food Court,Sambal Spaghetti,4.5,4.2
+Hall 10 Food Court,Ice Cream Waffles,2.5,4.9
+Hall 10 Food Court,Ma La Xiang Guo,7.0,4.7
