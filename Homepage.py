@@ -3,10 +3,12 @@ import Locationpage
 import Updatepage
 import optionsPage
 import filesystem
+import tkinter as tk
+
 
 from tkinter import *
 from tkinter.ttk import *
-
+from tkinter import font as tkfont
 from sys import exit
 
 defaultdata = [["Hall 1 Food Court",100,100,[["Steamed/Roasted Chicken Rice",2.80,4],["Duck Rice",4.00,2.5],["Japanese Fried Chicken Curry Rice",5.00,4.9],["Sambal Spaghett",4.60,4.9],["Grilled Chicken with Satay Sauce",5.80,4.7],["Nasi Lemak",3.50,3.5],["Yong Tau Fu",4.00,4.5],["Mee Siam",2.90,3],["Bak Kut Teh",5.50,4.5],["Roti Prata",2.00,3.6]]]
@@ -28,77 +30,75 @@ if livedata ==False:
     filesystem.save_to_csv(defaultdata,canteenfile,foodfile)
     livedata = filesystem.load_to_list(canteenfile,foodfile)
 
-##print(livedata)
-##len(defaultdata[list1][list2])
-                        
-##def sample_page_button():
-##  
-##    sampledata.set(input_sampledata.get())
-##
-##def sample_page_with_button():
-##    
-##    samplewindow = Toplevel()
-##
-##    headline = Label(samplewindow, text="Sample Page")
-##    headline.grid(columnspan=2)
-##    
-##    L1 = Label(samplewindow, text="Sample date input")
-##    L1.grid(row=1, column=0)
-##    
-##    E1 = Entry(samplewindow, bd =5 ,textvariable=input_sampledata)
-##    E1.grid(row=1, column=1)
-##    
-##    B3 = Button(samplewindow, text ="Send output", command = sample_page_button)
-##    B3.grid(columnspan=2)
-##    
-##    L2 = Label(samplewindow,text= "",textvariable=sampledata)
-##    L2.grid(columnspan=2)
-
 
 ## Create a blank window
 homePage = Tk()
+
+# x and y are the coordinates of the upper left corner
+w = 600
+h = 650
+x = 100
+y = 100
+   
+labelfont = ('times', 14, 'bold')
+
 homePage.title("NTU Food Recommendation System")
+homePage.resizable(width=False, height=False)
+homePage.geometry("%dx%d+%d+%d" % (w, h, x, y))
 
-## Create the top frame
-##topFrame = Frame(homePage)
-##topFrame.pack()
+##Headline
+headline = tk.Label(homePage, text="Welcome to NTU Food Recommendation System")
+headline.place(x=100, y=0)
+headline.config(font=labelfont)
 
-## Create the bottom frame
-##bottomFrame = Frame(homePage)
-##bottomFrame.pack()
-
+##NTUImage
 NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
 setImage = Label(homePage, image=NTUlogo)
+setImage.place(height=150, width=250)
+setImage.place(x=150, y=30)
 
-## Headline
-headline = Label(homePage, text="Welcome to NTU Food Recommendation System")
-headline.grid(columnspan=5)
+ttk.Separator(homePage).place(x=0, y=180, relwidth=1)
 
+#Menu Bar Method
+def popup_Exit():
+    answer = messagebox.askyesno("Confirmation", "Do you really want to quit?")
+    if answer == True:
+       homePage.destroy()
+
+
+#Menu Bar
+locationIcon = PhotoImage(file="resources/map.png")
+sortingIcon = PhotoImage(file="resources/sort.png")
+updateIcon = PhotoImage(file="resources/update.png")
+exitIcon = PhotoImage(file="resources/sign-out-option.png")
+
+menubar = Menu(homePage)
+location = Menu(menubar, tearoff=0)
+menubar.add_cascade(label=" Location  ", menu=location)
+location.add_command(label=" Get My Location", image=locationIcon, compound = LEFT, command=lambda:Locationpage.display_getuserlocation_map(livedata,homePage))
+location.add_command(label=" Update Location", image=updateIcon, compound = LEFT, command=lambda:Updatepage.display_getupdatepage(livedata,homePage))
+location.add_separator()
+
+sorting = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="  Sort  ", menu=sorting)
+sorting.add_command(label=" Sort By Rank", image=sortingIcon, compound = LEFT, command=lambda:optionsPage.sort_food_rank_page(livedata, homePage))
+sorting.add_command(label=" Sort By Price", image=sortingIcon, compound = LEFT, command=lambda:optionsPage.sort_food_price_page(livedata, homePage))
+sorting.add_command(label=" Sort By Location", image=sortingIcon, compound = LEFT, command=lambda:optionsPage.sort_food_location_page(livedata, homePage))
+sorting.add_separator()
+ 
+setting = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="  Settings  ", menu=setting)
+setting.add_command(label="Exit", image=exitIcon, compound = LEFT, command=popup_Exit)
+setting.add_separator()
+
+homePage.config(menu=menubar)
+    
 ## define variables
 input_sampledata = StringVar()
 sampledata = StringVar()
 
-## Create buttons
-
-myLocation = Button(homePage, text="Get My Location", command=lambda:Locationpage.display_getuserlocation_map(livedata,homePage))
-
-sortByLocation = Button(homePage, text="Sort Food by Location", command=lambda:optionsPage.sort_food_location_page(livedata, homePage))
-
-sortByRank = Button(homePage, text="Sort Food by Rank", command=lambda:optionsPage.sort_food_rank_page(livedata, homePage))
-
-sortByPrice = Button(homePage, text="Sort Food by Price", command=lambda:optionsPage.sort_food_price_page(livedata, homePage))
-
-updateData = Button(homePage, text="Update Location",command=lambda:Updatepage.display_getupdatepage(livedata,homePage))
-
-myLocation.grid(row=1, column=0)
-sortByLocation.grid(row=1, column=1)
-sortByRank.grid(row=1, column=2)
-sortByPrice.grid(row=1, column=3)
-updateData.grid(row=1, column=4)
-
-
-
-setImage.grid(columnspan=5)
-
 ## Constant loop until the 'x' button is pressed
 homePage.mainloop()
+## Create buttons
+
+
