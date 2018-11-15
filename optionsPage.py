@@ -8,27 +8,24 @@ from tkinter.ttk import *
 
 from sys import exit
 
-##def error_page:
+##def error_page(homePage):
 ##
 ##    ## Create a blank window
-##    sortFoodPage = Toplevel()
-##    sortFoodPage.title("NTU Food Recommendation System")
+##    errorPage = Tk()
+##    errorPage.title("NTU Food Recommendation System")
 ##
-##    NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
-##    setImage = Label(sortFoodPage, image=NTUlogo)
+##    emptyLine1 = Label(errorPage, text=" ")
+##    emptyLine1.grid(columnspan=5)
 ##
 ##    ## Headline
-##    headline = Label(sortFoodPage, text="Please select a valid option!")
+##    headline = Label(errorPage, text="Please select a valid option!")
 ##    headline.grid(columnspan=5)
 ##
-##    emptyLine1 = Label(sortFoodPage, text=" ")
-##    emptyLine1.grid(columnspan=5) 
-##
-##    setImage.grid(columnspan=5)
+##    emptyLine2 = Label(errorPage, text=" ")
+##    emptyLine2.grid(columnspan=5)
 ##
 ##    ## Constant loop until the 'x' button is pressed
 ##    homePage.mainloop()
-##
 
 def bubbleSortRank(arr):
     n = len(arr)
@@ -60,8 +57,8 @@ def bubbleSortPrice(arr):
             if arr[j][3] > arr[j+1][3] :
                 arr[j], arr[j+1] = arr[j+1], arr[j]
 
-def sort_food_by_location(livedata, homePage, submitVariable):
-
+def sort_food_by_location(livedata, homePage, hallVariable):
+    
     optionsPage = Toplevel()
 
     optionRanking = []
@@ -70,10 +67,10 @@ def sort_food_by_location(livedata, homePage, submitVariable):
     ##listOfFood = ["Please select from drop down list"]
     ##checkCount = 0
 
-    if (submitVariable != "All"):
+    if (hallVariable != "All" and hallVariable != "Select from List"):
         for list1 in range(0,len(livedata)): ##Cycle Through Main list
                 hallName = livedata[list1][0]
-                if (hallName == submitVariable):
+                if (hallName == hallVariable):
                     for list2 in range(0, len(livedata[list1][3])):   
                         foodName = livedata[list1][3][list2][0]
                         foodPrice = livedata[list1][3][list2][1]
@@ -86,6 +83,9 @@ def sort_food_by_location(livedata, homePage, submitVariable):
                         foodList=[]
         
         listTableFood(optionsPage,optionRanking)
+
+##    elif (hallVariable == "Select from List"):
+##        error_page(homePage)
 
     else:
         for list1 in range(0,len(livedata)): ##Cycle Through Main list
@@ -113,7 +113,7 @@ def sort_food_by_rank(livedata, homePage, submitVariable):
     ##listOfFood = ["Please select from drop down list"]
     ##checkCount = 0
 
-    if (submitVariable != "All"):
+    if (submitVariable != "All" and submitVariable != "Select from List"):
         for list1 in range(0,len(livedata)): ##Cycle Through Main list
                 hallName = livedata[list1][0]
                 for list2 in range(0, len(livedata[list1][3])):   
@@ -255,7 +255,7 @@ def sort_food_by_price(livedata, homePage, submitVariable, priceVariable):
         
         listTableFood(optionsPage,optionRanking)
 
-
+            
     else:
         for list1 in range(0,len(livedata)): ##Cycle Through Main list
             hallName = livedata[list1][0]
@@ -326,9 +326,6 @@ def sort_food_rank_page(livedata, homePage):
             hallName = livedata[list1][0]
             for list2 in range(0, len(livedata[list1][3])):   
                 foodName = livedata[list1][3][list2][0]
-##                if(len(listOfFood) == 0):
-##                    listOfFood.append(foodName)
-##                else:
                 for list3 in range(0, len(listOfFood), 1):
                     if (foodName == listOfFood[list3]):
                         checkCount = checkCount + 1
