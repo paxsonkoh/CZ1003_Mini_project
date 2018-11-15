@@ -58,6 +58,7 @@ def bubbleSortPrice(arr):
                 arr[j], arr[j+1] = arr[j+1], arr[j]
 
 def sort_food_by_location(livedata, homePage, hallVariable):
+
     
     optionsPage = Toplevel()
 
@@ -70,6 +71,7 @@ def sort_food_by_location(livedata, homePage, hallVariable):
     if (hallVariable != "All" and hallVariable != "Select from List"):
         for list1 in range(0,len(livedata)): ##Cycle Through Main list
                 hallName = livedata[list1][0]
+
                 if (hallName == hallVariable):
                     for list2 in range(0, len(livedata[list1][3])):   
                         foodName = livedata[list1][3][list2][0]
@@ -283,37 +285,48 @@ def sort_food_location_page(livedata, homePage):
         hallList.append(hallName) 
     
     ## Create a blank window
+    w = 600
+    h = 650
+    x = 100
+    y = 100
+
+    labelfont = ('times', 14, 'bold')
+    textFont = ('times', 12, 'bold')
+
     sortFoodPage = Toplevel()
     sortFoodPage.title("NTU Food Recommendation System")
-
-    NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
-    setImage = Label(sortFoodPage, image=NTUlogo)
+    sortFoodPage.resizable(width=False, height=False)
+    sortFoodPage.geometry("%dx%d+%d+%d" % (w, h, x, y))
 
     ## Headline
     headline = Label(sortFoodPage, text="Sort Food By Location")
-    headline.grid(columnspan=5)
+    headline.place(x=200, y=0)
+    headline.config(font=labelfont)
 
-    emptyLine1 = Label(sortFoodPage, text=" ")
-    emptyLine1.grid(columnspan=5)
+    ## NTUImage
+    NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
+    setImage = Label(sortFoodPage, image=NTUlogo)
+    setImage.place(height=150, width=250)
+    setImage.place(x=150, y=30)
+
+    ttk.Separator(sortFoodPage).place(x=0, y=180, relwidth=1)
 
     hallVariable = StringVar(sortFoodPage)
     hallVariable.set(hallList[0])
 
     hallDropListLabel = Label(sortFoodPage, text="Please Select Hall: ")
-    hallDropListLabel.grid(columnspan=5)
+    hallDropListLabel.place(x=100, y=200)
+    hallDropListLabel.config(font=textFont)
     
     hallDropList = OptionMenu(sortFoodPage, hallVariable, *hallList)
-    hallDropList.grid(columnspan=5)
+    hallDropList.place(x=300, y=200)
 
     emptyLine2 = Label(sortFoodPage, text=" ")
     emptyLine2.grid(columnspan=5)
     
     hallDropListButton = Button(sortFoodPage, text="Submit", command=lambda:sort_food_by_location(livedata,homePage,hallVariable.get()))
-    hallDropListButton.grid(columnspan=5)
+    hallDropListButton.place(x=230, y=250)
     
-
-    setImage.grid(columnspan=5)
-
     ## Constant loop until the 'x' button is pressed
     homePage.mainloop()        
                         
@@ -326,6 +339,9 @@ def sort_food_rank_page(livedata, homePage):
             hallName = livedata[list1][0]
             for list2 in range(0, len(livedata[list1][3])):   
                 foodName = livedata[list1][3][list2][0]
+
+
+
                 for list3 in range(0, len(listOfFood), 1):
                     if (foodName == listOfFood[list3]):
                         checkCount = checkCount + 1
@@ -335,37 +351,45 @@ def sort_food_rank_page(livedata, homePage):
                     listOfFood.append(foodName)
     
     ## Create a blank window
+    w = 600
+    h = 650
+    x = 100
+    y = 100
+
+    labelfont = ('times', 14, 'bold')
+    textFont = ('times', 12, 'bold')
+
     sortFoodPage = Toplevel()
     sortFoodPage.title("NTU Food Recommendation System")
-
-    NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
-    setImage = Label(sortFoodPage, image=NTUlogo)
+    sortFoodPage.resizable(width=False, height=False)
+    sortFoodPage.geometry("%dx%d+%d+%d" % (w, h, x, y))
 
     ## Headline
     headline = Label(sortFoodPage, text="Sort Food By Rank")
-    headline.grid(columnspan=5)
+    headline.place(x=200, y=0)
+    headline.config(font=labelfont)
 
-    emptyLine1 = Label(sortFoodPage, text=" ")
-    emptyLine1.grid(columnspan=5)
+    ## NTUImage
+    NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
+    setImage = Label(sortFoodPage, image=NTUlogo)
+    setImage.place(height=150, width=250)
+    setImage.place(x=150, y=30)
+
+    ttk.Separator(sortFoodPage).place(x=0, y=180, relwidth=1)
 
     foodVariable = StringVar(sortFoodPage)
     foodVariable.set(listOfFood[0])
 
     foodDropListLabel = Label(sortFoodPage, text="Please Select Food Item: ")
-    foodDropListLabel.grid(columnspan=5)
+    foodDropListLabel.place(x=100, y=200)
+    foodDropListLabel.config(font=textFont)
     
     foodDropList = OptionMenu(sortFoodPage, foodVariable, *listOfFood)
-    foodDropList.grid(columnspan=5)
-
-    emptyLine2 = Label(sortFoodPage, text=" ")
-    emptyLine2.grid(columnspan=5)
+    foodDropList.place(x=300, y=200)
     
     foodDropListButton = Button(sortFoodPage, text="Submit", command=lambda:sort_food_by_rank(livedata,homePage,foodVariable.get()))
-    foodDropListButton.grid(columnspan=5)
+    foodDropListButton.place(x=230, y=250)
     
-
-    setImage.grid(columnspan=5)
-
     ## Constant loop until the 'x' button is pressed
     homePage.mainloop()
 
@@ -392,48 +416,55 @@ def sort_food_price_page(livedata, homePage):
                     listOfFood.append(foodName)
     
     ## Create a blank window
+
+    w = 600
+    h = 650
+    x = 100
+    y = 100
+
+    labelfont = ('times', 14, 'bold')
+    textFont = ('times', 12, 'bold')
+
     sortFoodPage = Toplevel()
     sortFoodPage.title("NTU Food Recommendation System")
-
-    NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
-    setImage = Label(sortFoodPage, image=NTUlogo)
+    sortFoodPage.resizable(width=False, height=False)
+    sortFoodPage.geometry("%dx%d+%d+%d" % (w, h, x, y))
 
     ## Headline
     headline = Label(sortFoodPage, text="Sort Food By Price")
-    headline.grid(columnspan=5)
+    headline.place(x=200, y=0)
+    headline.config(font=labelfont)
 
-    emptyLine1 = Label(sortFoodPage, text=" ")
-    emptyLine1.grid(columnspan=5)
+    ## NTUImage
+    NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
+    setImage = Label(sortFoodPage, image=NTUlogo)
+    setImage.place(height=150, width=250)
+    setImage.place(x=150, y=30)
+
+    ttk.Separator(sortFoodPage).place(x=0, y=180, relwidth=1)
 
     foodVariable = StringVar(sortFoodPage)
     foodVariable.set(listOfFood[0]) ##default value
 
     foodDropListLabel = Label(sortFoodPage, text="Please Select Food Item: ")
-    foodDropListLabel.grid(columnspan=5)
+    foodDropListLabel.place(x=100, y=200)
+    foodDropListLabel.config(font=textFont)
     
     foodDropList = OptionMenu(sortFoodPage, foodVariable, *listOfFood)
-    foodDropList.grid(columnspan=5)
-
-    emptyLine2 = Label(sortFoodPage, text=" ")
-    emptyLine2.grid(columnspan=5)
+    foodDropList.place(x=300, y=200)
 
     priceVariable = StringVar(sortFoodPage)
     priceVariable.set(priceRange[0]) ##default value
 
     priceDropListLabel = Label(sortFoodPage, text="Price Range (Below $): ")
-    priceDropListLabel.grid(columnspan=5)
-    
+    priceDropListLabel.place(x=100, y=250)
+    priceDropListLabel.config(font=textFont)
+
     priceDropList = OptionMenu(sortFoodPage, priceVariable, *priceRange)
-    priceDropList.grid(columnspan=5)
+    priceDropList.place(x=300, y=250)
 
-    emptyLine2 = Label(sortFoodPage, text=" ")
-    emptyLine2.grid(columnspan=5)
-
-    foodDropListButton = Button(sortFoodPage, text="Submit", command=lambda:sort_food_by_price(livedata,homePage,foodVariable.get(), priceVariable.get()))
-                                
-    foodDropListButton.grid(columnspan=5)
-
-    setImage.grid(columnspan=5)
+    foodDropListButton = Button(sortFoodPage, text="Submit", command=lambda:sort_food_by_price(livedata,homePage,foodVariable.get(), priceVariable.get()))                        
+    foodDropListButton.place(x=230, y=310)
 
     ## Constant loop until the 'x' button is pressed
     homePage.mainloop()
