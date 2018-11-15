@@ -8,30 +8,10 @@ class listTableXY(Frame,list):
         self.root =page
         self.CreateUI()
         self.LoadTable(livedata)
-        #self.grid(sticky = (N,S,W,E))
-        #page.grid_rowconfigure(0, weight = 1)
-        #page.grid_columnconfigure(0, weight = 1)
+        self.grid(sticky = (N,S,W,E))
+        page.grid_rowconfigure(0, weight = 1)
+        page.grid_columnconfigure(0, weight = 1)
 
-        w = 600
-        h = 650
-        x = 100
-        y = 100
-           
-        labelfont = ('times', 14, 'bold')
-
-        page.title("NTU Food Recommendation System")
-        page.resizable(width=False, height=False)
-        page.geometry("%dx%d+%d+%d" % (w, h, x, y))
-
-        ##NTUImage
-        NTUlogo = PhotoImage(file="resources/NTU_Logo_Partnership.png")
-        setImage = Label(page, image=NTUlogo)
-        setImage.image = NTUlogo 
-        setImage.place(height=150, width=250)
-        setImage.place(x=150, y=30)
-
-        ttk.Separator(page).place(x=0, y=180, relwidth=1)
-        
     def CreateUI(self):
         tv = Treeview(self.root)
         tv['columns'] = ('X condinate', 'Y condinate')
@@ -47,9 +27,7 @@ class listTableXY(Frame,list):
         tv.column('X condinate', anchor='center', width=100)
         tv.heading('Y condinate', text='Y condinate')
         tv.column('Y condinate', anchor='center', width=100)
-        tv.place(height=400, width=600)
-        tv.place(x=0,y=200)
-        #tv.grid(sticky = (N,S,W,E))
+        tv.grid(sticky = (N,S,W,E))
         self.treeview = tv
         self.grid_rowconfigure(0, weight = 1)
         self.grid_columnconfigure(0, weight = 1)
@@ -70,7 +48,6 @@ class listTableXY(Frame,list):
 ##                foodRating = livedata[list1][3][list2][1]
 ##                foodPrice = livedata[list1][3][list2][2]
             self.treeview.insert('', 'end', text=hallName, values=(livedata[list1][1],livedata[list1][2]))
-
     def onDoubleClick(self, event):
     # close previous popups
         self.destroyPopups()
